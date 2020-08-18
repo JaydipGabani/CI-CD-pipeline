@@ -19,29 +19,29 @@
 
 ### Report
 #### Architecture
-![](https://github.ncsu.edu/cscdevops-spring2020/DEVOPS-06/blob/master/resources/m3.png)
+![](resources/m3.png)
 
 #### Tasks
 - Provision cloud instances and monitoring control plane.
   - Get AWS credentials: Follow the instruction to create IAM User and configuring AWS in the local machine: https://blog.ipswitch.com/how-to-create-an-ec2-instance-with-python
   - Edit AWS Configuration:
-    - [Decrypt and edit vars file to input AWS Configurations](https://github.ncsu.edu/cscdevops-spring2020/DEVOPS-06/blob/master/cm/vars/vars.yml)
-    - [Replace the key here](https://github.ncsu.edu/cscdevops-spring2020/DEVOPS-06/blob/master/provision/roles/provision_envi/templates/ec2-KP-devops06.pem) with your personal AWS private key.(here the key is encrypted)
-  - [setup jenkins server for AWS EC2 provisioning environment](https://github.ncsu.edu/cscdevops-spring2020/DEVOPS-06/blob/master/provision/provision.yml)
-  - [Provision ec2 instances in AWS](https://github.ncsu.edu/cscdevops-spring2020/DEVOPS-06/blob/master/provision/roles/provision_envi/templates/create_aws_vm.py)
-  - [Setup Monitor VM in AWS](https://github.ncsu.edu/cscdevops-spring2020/DEVOPS-06/blob/master/provision/monitor.yml)
-  - [Setup iTrust VM in AWS](https://github.ncsu.edu/cscdevops-spring2020/DEVOPS-06/blob/master/provision/iTrust.yml)
-  - [Setup checkbox.io VM in AWS](https://github.ncsu.edu/cscdevops-spring2020/DEVOPS-06/blob/master/provision/checkbox.yml)
-  - [Monitoring VM with dashboard](https://github.ncsu.edu/cscdevops-spring2020/DEVOPS-06/tree/master/provision/roles/monitor_setup/templates/dashboard)
-  - [iTrust monitoring and checkbox monitoring](https://github.ncsu.edu/cscdevops-spring2020/DEVOPS-06/tree/master/provision/roles/webserver_setup/templates/agent)
+    - [Decrypt and edit vars file to input AWS Configurations](cm/vars/vars.yml)
+    - [Replace the key here](provision/roles/provision_envi/templates/ec2-KP-devops06.pem) with your personal AWS private key.(here the key is encrypted)
+  - [setup jenkins server for AWS EC2 provisioning environment](provision/provision.yml)
+  - [Provision ec2 instances in AWS](provision/roles/provision_envi/templates/create_aws_vm.py)
+  - [Setup Monitor VM in AWS](provision/monitor.yml)
+  - [Setup iTrust VM in AWS](provision/iTrust.yml)
+  - [Setup checkbox.io VM in AWS](provision/checkbox.yml)
+  - [Monitoring VM with dashboard](provision/roles/monitor_setup/templates/dashboard)
+  - [iTrust monitoring and checkbox monitoring](provision/roles/webserver_setup/templates/agent)
   
 - Deploy checkbox.io and iTrust.
-  - [Deployment of checkbox.io](https://github.ncsu.edu/cscdevops-spring2020/DEVOPS-06/blob/master/deploy/checkbox.io.yml)
-  - [Deployment of iTrust](https://github.ncsu.edu/cscdevops-spring2020/DEVOPS-06/blob/master/deploy/iTrust.yml)
+  - [Deployment of checkbox.io](deploy/checkbox.io.yml)
+  - [Deployment of iTrust](deploy/iTrust.yml)
   
 - Canary Analysis.
-  - [Completed canary analysis task](https://github.ncsu.edu/cscdevops-spring2020/DEVOPS-06/blob/master/commands/canary.js) by provisioning VMs, running proxy, performing canary analysis and deleting the VMs)
-  - Implemented [proxy and canary analysis](https://github.ncsu.edu/cscdevops-spring2020/DEVOPS-06/blob/master/canary/roles/proxy/templates/proxy.js) on the blue green server.
+  - [Completed canary analysis task](commands/canary.js) by provisioning VMs, running proxy, performing canary analysis and deleting the VMs)
+  - Implemented [proxy and canary analysis](canary/roles/proxy/templates/proxy.js) on the blue green server.
     
 #### Technologies Used
 - NodeJS: 
@@ -74,8 +74,8 @@
 
 #### Setup
 ``` 
-git clone https://github.ncsu.edu/cscdevops-spring2020/DEVOPS-06.git devops6
-cd devops6
+git clone https://github.com/JaydipGabani/CI-CD-pipeline.git
+cd CI-CD-pipeline
 dos2unix cm/server-init.sh
 dos2unix cm/run-ansible.sh
 npm install
@@ -110,35 +110,35 @@ pipeline canary <blueServer> <greenServer>
 ### Output
 #### Provision
 EC2 Instances provisioned:</br>
-![](https://github.ncsu.edu/cscdevops-spring2020/DEVOPS-06/blob/master/resources/prov1.png)
+![](resources/prov1.png)
 
 Monitor Dashboard @ monitor_ip:8080 </br>
-![](https://github.ncsu.edu/cscdevops-spring2020/DEVOPS-06/blob/master/resources/prov2.png)
+![](resources/prov2.png)
 
 #### Deploy
 Deploy of checkbox.io application </br>
-![](https://github.ncsu.edu/cscdevops-spring2020/DEVOPS-06/blob/master/resources/checkboxDeploy.png)
+![](resources/checkboxDeploy.png)
 
-![](https://github.ncsu.edu/cscdevops-spring2020/DEVOPS-06/blob/master/resources/deployCheckboxApi.png)
+![](resources/deployCheckboxApi.png)
 
 Build job output of iTrust2 </br>
-![](https://github.ncsu.edu/cscdevops-spring2020/DEVOPS-06/blob/master/resources/iTrustBuild.png)
+![](resources/iTrustBuild.png)
 
 Deploy of iTrust2 application </br>
-![](https://github.ncsu.edu/cscdevops-spring2020/DEVOPS-06/blob/master/resources/deployItrust2.png)
+![](resources/deployItrust2.png)
 
 Monitor Dashboard @ monitor_ip:8080 after deploying of applications</br>
-![](https://github.ncsu.edu/cscdevops-spring2020/DEVOPS-06/blob/master/resources/deployMonitorDashboard.png)
+![](resources/deployMonitorDashboard.png)
 
 #### Canary
 Provision of instances in local machine:</br>
-![](https://github.ncsu.edu/cscdevops-spring2020/DEVOPS-06/blob/master/resources/canaryVB.png)
+![](resources/canaryVB.png)
 
 Output of `pipeline canary master broken` </br>
-![](https://github.ncsu.edu/cscdevops-spring2020/DEVOPS-06/blob/master/resources/canaryFail.png)
+![](resources/canaryFail.png)
 
 Output of `pipeline canary master master` </br>
-![](https://github.ncsu.edu/cscdevops-spring2020/DEVOPS-06/blob/master/resources/canaryPass.png)
+![](resources/canaryPass.png)
 
 
 ### Screencast
@@ -155,10 +155,10 @@ The kanban project board is [here](https://github.ncsu.edu/cscdevops-spring2020/
 
 ### Checkpoint reports
 #### Milestone 3 - 
-Read [CHECKPOINT.md](https://github.ncsu.edu/cscdevops-spring2020/DEVOPS-06/blob/master/CHECKPOINT_M3.md)
+Read [CHECKPOINT.md](CHECKPOINT_M3.md)
 
 #### Milestone 2 - Test + Analysis
-Read [CHECKPOINT.md](https://github.ncsu.edu/cscdevops-spring2020/DEVOPS-06/blob/master/CHECKPOINT_MILESTONE2.md)
+Read [CHECKPOINT.md](CHECKPOINT_MILESTONE2.md)
 
 #### Milestone 1 - Build
-Read [CHECKPOINT.md](https://github.ncsu.edu/cscdevops-spring2020/DEVOPS-06/blob/master/CHECKPOINT.md)
+Read [CHECKPOINT.md](CHECKPOINT.md)
